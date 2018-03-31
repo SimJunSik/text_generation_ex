@@ -63,7 +63,7 @@ for i in range(400):
         x[0, t, char_indices[char]] = 1.
     # 다음에 올 문자를 예측하기
     preds = loaded_model.predict(x, verbose=0)[0]
-    next_index = sample(preds, diversity)
+    next_index = sample(preds, 0.5)
     next_char = indices_char[next_index]
     # 출력하기
     generated += next_char
