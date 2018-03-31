@@ -1,7 +1,5 @@
 import codecs
 from bs4 import BeautifulSoup
-import keras.backend.tensorflow_backend as K
-from keras.utils.data_utils import get_file
 import numpy as np
 import random, sys
 fp = codecs.open("./output_txt.txt", "r", encoding="utf-8")
