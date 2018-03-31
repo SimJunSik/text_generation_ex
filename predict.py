@@ -62,7 +62,7 @@ for i in range(400):
     for t, char in enumerate(X):
         x[0, t, char_indices[char]] = 1.
     # 다음에 올 문자를 예측하기
-    preds = model.predict(x, verbose=0)[0]
+    preds = loaded_model.predict(x, verbose=0)[0]
     next_index = sample(preds, diversity)
     next_char = indices_char[next_index]
     # 출력하기
