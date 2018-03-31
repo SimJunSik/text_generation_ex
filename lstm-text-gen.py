@@ -53,7 +53,7 @@ def sample(preds, temperature=1.0):
     probas = np.random.multinomial(1, preds, 1)
     return np.argmax(probas)
 # 학습시키고 텍스트 생성하기 반복
-for iteration in range(1, 3):
+for iteration in range(1, 60):
     print()
     print('-' * 50)
     print('반복 =', iteration)
