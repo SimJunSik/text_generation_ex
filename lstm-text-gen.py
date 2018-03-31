@@ -4,7 +4,6 @@ import keras.backend.tensorflow_backend as K
 from keras.utils.data_utils import get_file
 import numpy as np
 import random, sys
-with K.tf.device('/gpu:0'):
 fp = codecs.open("./output_txt.txt", "r", encoding="utf-8")
 #print(fp.read())
 
@@ -33,7 +32,7 @@ for i, sentence in enumerate(sentences):
         X[i, t, char_indices[char]] = 1
     y[i, char_indices[next_chars[i]]] = 1
 # 모델 구축하기(LSTM)
-with K.tf.device('/cpu:0'):
+with K.tf.device('/gpu:0'):
     print('모델을 구축합니다...')
     model = Sequential()
     model.add(LSTM(128, input_shape=(maxlen, len(chars))))
