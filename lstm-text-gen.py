@@ -1,6 +1,10 @@
 import codecs
 from bs4 import BeautifulSoup
 import keras.backend.tensorflow_backend as K
+from keras.models import Sequential
+from keras.layers import Dense, Activation, Dropout
+from keras.layers import LSTM
+from keras.optimizers import RMSprop
 import numpy as np
 import random, sys
 fp = codecs.open("./output_txt.txt", "r", encoding="utf-8")
