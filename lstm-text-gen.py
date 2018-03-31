@@ -1,12 +1,10 @@
 import codecs
 from bs4 import BeautifulSoup
-from keras.models import Sequential
-from keras.layers import Dense, Activation, Dropout
-from keras.layers import LSTM
-from keras.optimizers import RMSprop
+import keras.backend.tensorflow_backend as K
 from keras.utils.data_utils import get_file
 import numpy as np
 import random, sys
+with K.tf.device('/gpu:0'):
 fp = codecs.open("./output_txt.txt", "r", encoding="utf-8")
 #print(fp.read())
 
@@ -35,13 +33,14 @@ for i, sentence in enumerate(sentences):
         X[i, t, char_indices[char]] = 1
     y[i, char_indices[next_chars[i]]] = 1
 # 모델 구축하기(LSTM)
-print('모델을 구축합니다...')
-model = Sequential()
-model.add(LSTM(128, input_shape=(maxlen, len(chars))))
-model.add(Dense(len(chars)))
-model.add(Activation('softmax'))
-optimizer = RMSprop(lr=0.01)
-model.compile(loss='categorical_crossentropy', optimizer=optimizer)
+with K.tf.device('/cpu:0'):
+    print('모델을 구축합니다...')
+    model = Sequential()
+    model.add(LSTM(128, input_shape=(maxlen, len(chars))))
+    model.add(Dense(len(chars)))
+    model.add(Activation('softmax'))
+    optimizer = RMSprop(lr=0.01)
+    model.compile(loss='categorical_crossentropy', optimizer=optimizer)
 # 후보를 배열에서 꺼내기
 def sample(preds, temperature=1.0):
     preds = np.asarray(preds).astype('float64')
