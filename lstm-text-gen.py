@@ -5,6 +5,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.layers import LSTM
 from keras.optimizers import RMSprop
+from keras.models import model_from_json
 import numpy as np
 import random, sys
 fp = codecs.open("./output_txt.txt", "r", encoding="utf-8")
@@ -52,7 +53,7 @@ def sample(preds, temperature=1.0):
     probas = np.random.multinomial(1, preds, 1)
     return np.argmax(probas)
 # 학습시키고 텍스트 생성하기 반복
-for iteration in range(1, 60):
+for iteration in range(1, 3):
     print()
     print('-' * 50)
     print('반복 =', iteration)
@@ -83,3 +84,10 @@ for iteration in range(1, 60):
             sys.stdout.write(next_char)
             sys.stdout.flush()
         print()
+
+model_json = model.to_json()
+with open("model.json", "w") as json_file :
+    json_file.write(model_json)
+
+model.save_weights("model.h5")
+print("Saved model to disk")
