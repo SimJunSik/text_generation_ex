@@ -8,7 +8,7 @@ from model import Seq2Seq
 from dialog import Dialog
 
 
-def train(dialog, batch_size=100, epoch=100):
+def train(dialog, batch_size=100, epoch=1):
     model = Seq2Seq(dialog.vocab_size)
 
     with tf.Session() as sess:
