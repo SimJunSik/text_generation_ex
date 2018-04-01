@@ -8,7 +8,7 @@ from model import Seq2Seq
 from dialog import Dialog
 
 
-def train(dialog, batch_size=100, epoch=1):
+def train(dialog, batch_size=100, epoch=100):
     model = Seq2Seq(dialog.vocab_size)
 
     with tf.Session() as sess:
@@ -28,7 +28,7 @@ def train(dialog, batch_size=100, epoch=1):
         total_batch = int(math.ceil(len(dialog.examples)/float(batch_size)))
 
         print(total_batch * epoch)
-        for step in range(total_batch * epoch):
+        for step in range(1600):
             enc_input, dec_input, targets = dialog.next_batch(batch_size)
             _, loss = model.train(sess, enc_input, dec_input, targets)
 
