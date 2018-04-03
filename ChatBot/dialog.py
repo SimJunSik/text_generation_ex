@@ -112,9 +112,11 @@ class Dialog():
 
         # 작은 데이터셋을 실험하기 위한 꼼수
         # 현재의 답변을 다음 질문의 질문으로 하고, 다음 질문을 답변으로 하여 데이터를 늘린다.
+        """
         if FLAGS.data_loop is True:
             batch_set = batch_set + batch_set[1:] + batch_set[0:1]
-
+        """
+        
         # TODO: 구글처럼 버킷을 이용한 방식으로 변경
         # 간단하게 만들기 위해 구글처럼 버킷을 쓰지 않고 같은 배치는 같은 사이즈를 사용하도록 만듬
         max_len_input, max_len_output = self._max_len(batch_set)
