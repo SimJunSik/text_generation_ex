@@ -7,6 +7,7 @@ from config import FLAGS
 from model import Seq2Seq
 from dialog import Dialog
 
+from konlpy.tag import Twitter
 
 def train(dialog, batch_size=100, epoch=100):
     model = Seq2Seq(dialog.vocab_size)
@@ -46,7 +47,8 @@ def train(dialog, batch_size=100, epoch=100):
 
 def test(dialog, batch_size=100):
     print("\n=== 예측 테스트 ===")
-
+    twitter = Twitter()
+    content = ""
     model = Seq2Seq(dialog.vocab_size)
 
     with tf.Session() as sess:
