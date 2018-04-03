@@ -11,8 +11,8 @@ tf.app.flags.DEFINE_boolean("data_loop", False, "작은 데이터셋을 실험�
 tf.app.flags.DEFINE_integer("batch_size", 100, "미니 배치 크기")
 tf.app.flags.DEFINE_integer("epoch", 1000, "총 학습 반복 횟수")
 
-tf.app.flags.DEFINE_string("data_path", "./data/trans_output.txt", "대화 파일 위치")
-tf.app.flags.DEFINE_string("voc_path", "./data/trans_output.voc", "어휘 사전 파일 위치")
+tf.app.flags.DEFINE_string("data_path", "./data/trans_twiiter_output.txt", "대화 파일 위치")
+tf.app.flags.DEFINE_string("voc_path", "./data/trans_twiiter_output.voc", "어휘 사전 파일 위치")
 tf.app.flags.DEFINE_boolean("voc_test", False, "어휘 사전을 테스트합니다.")
 tf.app.flags.DEFINE_boolean("voc_build", False, "주어진 대화 파일을 이용해 어휘 사전을 작성합니다.")
 
